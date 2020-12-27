@@ -8,7 +8,7 @@ import java.util.WeakHashMap;
 
 public class AirportsDAO {
 
-    private static final String databaseUrl = "C:\\Users\\cobzarl\\Desktop\\Wantsome\\Java\\DBeaver\\airlinerezervationsystem.db";
+    private static final String databaseUrl = "jdbc:sqlite:C:\\Users\\cobzarl\\Desktop\\Wantsome\\Java\\DBeaver\\airlinerezervationsystem";
 
     public void saveAirport (AirportsDTO airport) throws SQLException {
         SQLiteConfig config = new SQLiteConfig();

@@ -7,10 +7,9 @@ import java.sql.*;
 
 public class UsersDAO {
 
-    private static final String databaseUrl = "C:\\Users\\cobzarl\\Desktop\\Wantsome\\Java\\DBeaver\\airlinerezervationsystem.db";
+    private static final String databaseUrl = "jdbc:sqlite:C:\\Users\\cobzarl\\Desktop\\Wantsome\\Java\\DBeaver\\airlinerezervationsystem";
 
     public void saveUser(UsersDTO usersDTO) throws SQLException {
-        System.out.println("About to save " + usersDTO.toString());
         SQLiteConfig config = new SQLiteConfig();
         config.enforceForeignKeys(true);
 

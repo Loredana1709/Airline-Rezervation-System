@@ -6,7 +6,7 @@ import wantsome.project.DTOs.TicketsDTO;
 import java.sql.*;
 
 public class TicketsDAO {
-    private static final String databaseUrl = "C:\\Users\\cobzarl\\Desktop\\Wantsome\\Java\\DBeaver\\airlinerezervationsystem.db";
+    private static final String databaseUrl = "jdbc:sqlite:C:\\Users\\cobzarl\\Desktop\\Wantsome\\Java\\DBeaver\\airlinerezervationsystem";
 
     public void saveTicket (TicketsDTO ticket) throws SQLException {
         SQLiteConfig config = new SQLiteConfig();

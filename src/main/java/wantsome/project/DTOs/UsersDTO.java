@@ -8,12 +8,13 @@ public class UsersDTO {
     private String login_name;
     private String password;
     private String email;
-    private Integer phone;
+    private int phone;
     private String address;
 
-    public UsersDTO(Integer user_id, String first_name, String last_name, String login_name,
-                    String password, String email, Integer phone, String address) {
-        this.user_id = user_id;
+
+    public UsersDTO(Integer id, String first_name, String last_name, String login_name,
+                    String password, String email, int phone, String address) {
+        this.user_id = id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.login_name = login_name;
@@ -71,11 +72,11 @@ public class UsersDTO {
         this.email = email;
     }
 
-    public Integer getPhone() {
+    public int getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(int phone) {
         this.phone = phone;
     }
 
