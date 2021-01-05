@@ -1,21 +1,21 @@
 package wantsome.project.DTOs;
 
-public class CitiesDTO {
+public class CityDTO {
 
-    private Integer city_id;
+    private Integer cityID;
     private String name;
 
-    public CitiesDTO(Integer city_id, String name) {
-        this.city_id = city_id;
+    public CityDTO(Integer cityID, String name) {
+        this.cityID = cityID;
         this.name = name;
     }
 
-    public Integer getCity_id() {
-        return city_id;
+    public Integer getCityID() {
+        return cityID;
     }
 
-    public void setCity_id(Integer city_id) {
-        this.city_id = city_id;
+    public void setCityID(Integer cityID) {
+        this.cityID = cityID;
     }
 
     public String getName() {
@@ -28,8 +28,8 @@ public class CitiesDTO {
 
     @Override
     public String toString() {
-        return "CitiesDTO{" +
-                "city_id=" + city_id +
+        return "CityDTO{" +
+                "cityID=" + cityID +
                 ", name='" + name + '\'' +
                 '}';
     }
