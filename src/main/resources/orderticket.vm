@@ -1,0 +1,75 @@
+<html>
+<head>
+    <title> Order Ticket </title>
+    <link rel="stylesheet" type="text/css" href="/orderticket.css">
+</head>
+
+<body>
+<div class="bg">
+<h3> Hello, $username! </h3>
+
+<h1> Flight List </h1>
+<br>
+
+<div id="search">
+    <b style="font-size:20px;">Search the table any of below criteria: &nbsp;&nbsp;
+    <input id='myInput' onkeyup='searchTable()' type='text' placeholder="Search here">
+</div>
+    <br><br>
+
+    <table id="myTable">
+        <tr class="header">
+            <th> SELECT </th>
+            <th> FLIGHT NUMBER </th>
+            <th> AIRLINE </th>
+            <th> FROM AIRPORT </th>
+            <th> TO AIRPORT </th>
+            <th> FLIGHT DATE </th>
+            <th> DEPARTURE TIME </th>
+            <th> ARRIVING TIME </th>
+            <th> BOOK </th>
+        </tr>
+        #foreach ($flight in $flights)
+            <tr>
+                <td><input type="radio" name="checked"/>
+                <td>$flight.flightNumber</td>
+                <td>$flight.airline</td>
+                <td>$flight.fromAirportName</td>
+                <td>$flight.toAirportName</td>
+                <td>$flight.flightDate</td>
+                <td>$flight.departureTime</td>
+                <td>$flight.arrivingTime</td>
+                <td><<input type='submit' value='BOOK' />></td>
+            </tr>
+        #end
+    </table>
+    <br><br><br><br>
+
+    <script>
+    function searchTable() {
+        var input, filter, found, table, tr, td, i, j;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td");
+            for (j = 0; j < td.length; j++) {
+                if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    found = true;
+                }
+            }
+            if (found) {
+                tr[i].style.display = "";
+                found = false;
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+    </script>
+
+</div>
+
+</body>
+</html>

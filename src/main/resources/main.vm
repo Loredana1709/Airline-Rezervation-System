@@ -1,20 +1,30 @@
 <html>
 <head>
-    <title>My App</title>
+    <title>Airline System</title>
     <link rel="stylesheet" type="text/css" href="/main.css">
 </head>
 
 <body>
 
-    <img src="/logo.png" width="200px">
+ <div class="bg">
 
-    <h1> Web page example </h1>
+ <br><br>
+    <div>
+    <h1> Welcome to My Airline System APP </h1>
 
-    <!-- example of using some data set in Velocity model, by Java code -->
-    Time from server: $serverTime <br>
+    <a href="/login"><p style="text-align:center"> LOGIN </p></a>
+    <a href="/signIn"><p style="text-align:center"> CREATE ACCOUNT </p></a>
 
-    <br>
-    <a href="/main"> Refresh page </a> <br>
+    </div>
+
+     <footer>
+         <p>Time from server: $serverTime <br></p>
+     </footer>
+
+ </div>
+
+
+
 
 </body>
 </html>

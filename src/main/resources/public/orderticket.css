@@ -1,0 +1,67 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    background-color: #D3D3D3;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 80%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#myInput {
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 40%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#search{
+  width: 100vw;
+  position: relative;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+
+.bg{
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+    color: black;
+    font-family: Georgia, serif;
+    font-size: 40px;
+    text-align: center
+}
+
+table, td, th {
+  border: 1px solid black;
+}
+
+td, th {
+  text-align: center;
+  padding: 15px;
+}
+
+tr:nth-child(even) {
+    background-color: #E6E6FA;
+}
+tr:nth-child(odd) {
+    background-color: #FFFFF0;
+}
+

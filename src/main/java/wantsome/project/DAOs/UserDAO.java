@@ -33,7 +33,7 @@ public class UserDAO {
         }
     }
 
-    public UserDTO getUser(int id){
+    public UserDTO getUser(String username){
         UserDTO result = null;
         SQLiteConfig config = new SQLiteConfig();
         config.enforceForeignKeys(true);
@@ -42,7 +42,7 @@ public class UserDAO {
 
         try(Connection connection = DriverManager.getConnection(databaseUrl, config.toProperties());
             PreparedStatement preparedStatement = connection.prepareStatement(query)){
-            preparedStatement.setInt(1, id);
+            preparedStatement.setString(1, username);
             try (ResultSet rs = preparedStatement.executeQuery()){
                 while (rs.next()){
                     result = new UserDTO(rs.getInt("ID"),
@@ -54,6 +54,55 @@ public class UserDAO {
                             rs.getInt("PHONE"),
                             rs.getString("ADDRESS"),
                             rs.getString("USER_TYPE"));
+                }
+            }
+        }
+        catch (SQLException e ){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public boolean checkUserInDB (UserDTO user){
+        boolean result = false;
+        SQLiteConfig config = new SQLiteConfig();
+        config.enforceForeignKeys(true);
+
+        String query = "SELECT * FROM USERS WHERE LOGIN_NAME = ? AND EMAIL = ? AND PASSWORD = ?";
+
+        try(Connection connection = DriverManager.getConnection(databaseUrl, config.toProperties());
+            PreparedStatement preparedStatement = connection.prepareStatement(query)){
+            preparedStatement.setString(1, user.getLoginName());
+            preparedStatement.setString(2, user.getEmail());
+            preparedStatement.setString(3, user.getPassword());
+            try (ResultSet rs = preparedStatement.executeQuery()){
+                if(rs.next()){
+                    result = true;
+                }
+            }
+        }
+        catch (SQLException e ){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public boolean checkIfAdmin (UserDTO user){
+        boolean result = false;
+        SQLiteConfig config = new SQLiteConfig();
+        config.enforceForeignKeys(true);
+
+        String query = "SELECT * FROM USERS WHERE EMAIL = ? AND PASSWORD = ?";
+
+        try(Connection connection = DriverManager.getConnection(databaseUrl, config.toProperties());
+            PreparedStatement preparedStatement = connection.prepareStatement(query)){
+            preparedStatement.setString(1, user.getEmail());
+            preparedStatement.setString(2, user.getPassword());
+            try (ResultSet rs = preparedStatement.executeQuery()){
+                while (rs.next()){
+                   if(rs.getString("USER_TYPE").toLowerCase().equals("admin")){
+                       result = true;
+                    }
                 }
             }
         }

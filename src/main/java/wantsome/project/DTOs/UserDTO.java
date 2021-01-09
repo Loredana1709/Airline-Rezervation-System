@@ -37,6 +37,12 @@ public class UserDTO {
         this.userType = userType;
     }
 
+    public UserDTO(String loginName, String email, String password){
+        this.loginName = loginName;
+        this.email = email;
+        this.password = password;
+    }
+
     public Integer getUserID() {
         return userID;
     }
