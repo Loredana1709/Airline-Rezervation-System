@@ -1,24 +1,41 @@
 package wantsome.project.DTOs;
 
+import java.util.Date;
+
 public class TicketDTO {
 
     private Integer ticketID;
     private Integer userID;
+    private String userFirstName;
+    private String userLastName;
     private Integer flightID;
-    private Double ticketPrice;
+    private String flightNumber;
+    private String airline;
+    private String departureDate;
+    private String arrivingDate;
 
-    public TicketDTO(Integer ticketID, Integer userID, Integer flightID, Double ticketPrice) {
+    public TicketDTO(Integer ticketID, Integer userID, Integer flightID) {
         this.ticketID = ticketID;
         this.userID = userID;
         this.flightID = flightID;
-        this.ticketPrice = ticketPrice;
+
     }
 
-    public TicketDTO(Integer userID, Integer flightID, Double ticketPrice) {
+    public TicketDTO(Integer userID, Integer flightID) {
         this.userID = userID;
         this.flightID = flightID;
-        this.ticketPrice = ticketPrice;
     }
+
+    public TicketDTO(Integer ticketID, String userFirstName, String userLastName,
+                     String flightNumber, String airline, String departureDate) {
+        this.ticketID = ticketID;
+        this.userFirstName = userFirstName;
+        this.userLastName = userLastName;
+        this.flightNumber = flightNumber;
+        this.airline = airline;
+        this.departureDate = departureDate;
+    }
+
 
     public Integer getTicketID() {
         return ticketID;
@@ -36,6 +53,22 @@ public class TicketDTO {
         this.userID = userID;
     }
 
+    public String getUserFirstName() {
+        return userFirstName;
+    }
+
+    public void setUserFirstName(String userFirstName) {
+        this.userFirstName = userFirstName;
+    }
+
+    public String getUserLastName() {
+        return userLastName;
+    }
+
+    public void setUserLastName(String userLastName) {
+        this.userLastName = userLastName;
+    }
+
     public Integer getFlightID() {
         return flightID;
     }
@@ -44,21 +77,50 @@ public class TicketDTO {
         this.flightID = flightID;
     }
 
-    public Double getTicketPrice() {
-        return ticketPrice;
+    public String getFlightNumber() {
+        return flightNumber;
     }
 
-    public void setTicketPrice(Double ticketPrice) {
-        this.ticketPrice = ticketPrice;
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
+    }
+
+    public String getAirline() {
+        return airline;
+    }
+
+    public void setAirline(String airline) {
+        this.airline = airline;
+    }
+
+    public String getDepartureDate() {
+        return departureDate;
+    }
+
+    public void setDepartureDate(String departureDate) {
+        this.departureDate = departureDate;
+    }
+
+    public String getArrivingDate() {
+        return arrivingDate;
+    }
+
+    public void setArrivingDate(String arrivingDate) {
+        this.arrivingDate = arrivingDate;
     }
 
     @Override
     public String toString() {
-        return "TicketsDTO{" +
+        return "TicketDTO{" +
                 "ticketID=" + ticketID +
                 ", userID=" + userID +
+                ", userFirstName='" + userFirstName + '\'' +
+                ", userLastName='" + userLastName + '\'' +
                 ", flightID=" + flightID +
-                ", ticketPrice=" + ticketPrice +
+                ", flightNumber='" + flightNumber + '\'' +
+                ", airline='" + airline + '\'' +
+                ", departureDate='" + departureDate + '\'' +
+                ", arrivingDate='" + arrivingDate + '\'' +
                 '}';
     }
 }

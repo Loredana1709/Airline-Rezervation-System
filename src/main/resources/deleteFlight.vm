@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title> Delete Flight </title>
+    <link rel="stylesheet" type="text/css" href="/deleteFlight.css">
+</head>
+
+<body>
+    <h3> You are logged with &#8594; $user</h3>
+
+<div class="flight">
+    <h2> Delete Flight </h2><br>
+
+    <form method='POST'>
+        <label for='confirm'></label>
+        <input type='radio' name='confirm' value='no'>NO</input>
+        <input type='radio' name='confirm' value='yes'>YES  &nbsp; </input>
+        <input type='submit' value='Submit' /><br><br>
+    </form>
+
+    <p> Flight number &nbsp; &#8669; &nbsp; $flight.flightNumber </p>
+    <p> Airline &nbsp; &#8669; &nbsp; $flight.airline </p>
+    <p> Departure &nbsp; &#8669; &nbsp; $flight.fromAirportName </p>
+    <p> Destination &nbsp; &#8669; &nbsp; $flight.toAirportName </p>
+    <p> Departure Date &nbsp; &#8669; &nbsp; $flight.flightDate </p>
+    <p> Arriving Date &nbsp; &#8669; &nbsp; $flight.arrivingTime </p>
+</div>
+
+    #if( $!message)
+    <h2 style="color: red">$message</h2>
+    #end
+
+</body>
+</html>

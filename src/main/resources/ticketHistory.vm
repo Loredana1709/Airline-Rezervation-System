@@ -1,0 +1,70 @@
+<html>
+<head>
+    <title> Ticket History </title>
+    <link rel="stylesheet" type="text/css" href="/ticketHistory.css">
+</head>
+
+<body>
+
+
+    <h4> &nbsp; You are logged with &#8594; $user </h4>
+    <button class="home" onclick="document.location='/main'"> HOME </button>
+
+
+<h2> &nbsp; &nbsp; &nbsp; Flights History </h2><br>
+
+    <div id="search">
+        <input id='myInput' onkeyup='searchTable()' type='text' placeholder="Search here">
+    </div><br><br>
+
+     <table class="blue" id="myTable">
+     <thead>
+            <tr>
+                <th> FIRST NAME </th>
+                <th> LAST NAME </th>
+                <th> FLIGHT NUMBER </th>
+                <th> AIRLINE </th>
+                <th> DEPARTURE DATE </th>
+            </tr>
+     </thead>
+     <tbody>
+            #foreach ($ticket in $tickets)
+                <tr>
+                    <td>$ticket.userFirstName</td>
+                    <td>$ticket.userLastName</td>
+                    <td>$ticket.flightNumber</td>
+                    <td>$ticket.airline</td>
+                    <td>$ticket.departureDate</td>
+                </tr>
+     <tbody>
+            #end
+     </table>
+     <br><br>
+
+
+    <script>
+    function searchTable() {
+        var input, filter, found, table, tr, td, i, j;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td");
+            for (j = 0; j < td.length; j++) {
+                if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    found = true;
+                }
+            }
+            if (found) {
+                tr[i].style.display = "";
+                found = false;
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+    </script>
+
+</body>
+</html>

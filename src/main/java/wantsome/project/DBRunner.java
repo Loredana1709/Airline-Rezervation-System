@@ -1,16 +1,32 @@
 package wantsome.project;
 
 import wantsome.project.DAOs.FlightDAO;
+import wantsome.project.DAOs.TicketDAO;
 import wantsome.project.DAOs.UserDAO;
 import wantsome.project.DTOs.FlightDTO;
+import wantsome.project.DTOs.TicketDTO;
 import wantsome.project.DTOs.UserDTO;
+
+import java.sql.Date;
+import java.sql.SQLOutput;
+import java.sql.Time;
 
 public class DBRunner {
     public static void main(String[] args) {
-//        UserDTO user = new UserDTO("loredana121@gmail.com", "sdhejr");
 //        UserDAO userDAO = new UserDAO();
-//        System.out.println(userDAO.checkUserInDB(user));
-        FlightDAO flightDAO = new FlightDAO();
-        System.out.println(flightDAO.getAllFlights());
+//
+//        UserDTO dbUser = userDAO.getUser("Lore", "loredana");
+//
+//        dbUser.setFirstName("gigel");
+//        dbUser = userDAO.updateUser(dbUser);
+
+
+//        FlightDAO flightDAO = new FlightDAO();
+//        FlightDTO flightDTO = flightDAO.getFlight("SJRY");
+//        flightDAO.deleteFlight("SJRY");
+
+        TicketDAO ticketDAO = new TicketDAO();
+//        System.out.println(ticketDAO.getAllTicketsFromUser(8));
+
     }
 }

@@ -1,6 +1,7 @@
 package wantsome.project.DAOs;
 
 import org.sqlite.SQLiteConfig;
+import wantsome.project.DTOs.AirportDTO;
 import wantsome.project.DTOs.FlightDTO;
 
 import java.sql.*;
@@ -16,25 +17,86 @@ public class FlightDAO {
         config.enforceForeignKeys(true);
 
         String query = "INSERT INTO FLIGHTS (FLIGHT_NUMBER, AIRLINE, FROM_AIRPORT_ID, " +
-                "TO_AIRPORT_ID, FLIGHT_DATE, DEPARTURE_TIME, ARRIVING_TIME)" +
-                "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                "TO_AIRPORT_ID, DEPARTURE_DATE, ARRIVING_DATE)" +
+                "VALUES (?, ?, ?, ?, ?, ?)";
 
         try(Connection connection = DriverManager.getConnection(databaseUrl, config.toProperties());
             PreparedStatement preparedStatement = connection.prepareStatement(query)){
             preparedStatement.setString(1, flight.getFlightNumber());
             preparedStatement.setString(2, flight.getAirline());
-            preparedStatement.setString(3, flight.getFromAirportName());
-            preparedStatement.setString(4, flight.getToAirportName());
-            preparedStatement.setDate(5, flight.getFlightDate());
-            preparedStatement.setTime(6, flight.getDepartureTime());
-            preparedStatement.setTime(7, flight.getArrivingTime());
+            AirportDAO airportDAO = new AirportDAO();
+            preparedStatement.setInt(3, airportDAO.getAirport(flight.getDepartureAirport())); //getAirport returns airportID using airportName
+            preparedStatement.setInt(4, airportDAO.getAirport(flight.getArrivingAirport()));
+            preparedStatement.setString(5, flight.getDepartureDate());
+            preparedStatement.setString(6, flight.getArrivingDate());
             preparedStatement.execute();
         }catch (SQLException e ){
             e.printStackTrace();
         }
     }
 
+    public FlightDTO getFlight (String flightNumber){
+        FlightDTO result = null;
+        SQLiteConfig config = new SQLiteConfig();
+        config.enforceForeignKeys(true);
 
+        String query = "SELECT f.ID, f.flight_number, f.airline, a.AIRPORT_NAME as \"from_airport\", \n" +
+                "a2.AIRPORT_NAME as \"to_airport\", DEPARTURE_DATE, ARRIVING_DATE\n" +
+                "from FLIGHTS f\n" +
+                "join AIRPORTS a on a.ID = f.from_airport_id\n" +
+                "join AIRPORTS a2 on a2.ID = f.TO_AIRPORT_ID\n" +
+                "where f.FLIGHT_NUMBER = ?;";
+
+        try(Connection connection = DriverManager.getConnection(databaseUrl, config.toProperties());
+            PreparedStatement preparedStatement = connection.prepareStatement(query)){
+            preparedStatement.setString(1, flightNumber);
+            try(ResultSet rs = preparedStatement.executeQuery()){
+                while (rs.next()){
+                    result = new FlightDTO(rs.getInt("ID"),
+                            rs.getString("FLIGHT_NUMBER"),
+                            rs.getString("AIRLINE"),
+                            rs.getString("from_airport"),
+                            rs.getString("to_airport"),
+                            rs.getString("departure_date"),
+                            rs.getString("arriving_date"));
+                }
+            }
+
+        }
+        catch (SQLException e ){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public FlightDTO getFlight (int flightID){
+        FlightDTO result = null;
+        SQLiteConfig config = new SQLiteConfig();
+        config.enforceForeignKeys(true);
+
+        String query = "SELECT * FROM FLIGHTS WHERE ID = ?";
+
+        try(Connection connection = DriverManager.getConnection(databaseUrl, config.toProperties());
+            PreparedStatement preparedStatement = connection.prepareStatement(query)){
+            preparedStatement.setInt(1, flightID);
+            try(ResultSet rs = preparedStatement.executeQuery()){
+                while (rs.next()){
+                    result = new FlightDTO(rs.getInt("ID"),
+                            rs.getString("FLIGHT_NUMBER"),
+                            rs.getString("AIRLINE"),
+                            rs.getString("FROM_AIRPORT_ID"),
+                            rs.getString("TO_AIRPORT_ID"),
+                            rs.getString("departure_date"),
+                            rs.getString("arriving_date"));
+                }
+            }
+
+        }
+        catch (SQLException e ){
+            e.printStackTrace();
+        }
+        return result;
+    }
 
     public List<FlightDTO> getAllFlights(){
         List<FlightDTO> flights = new ArrayList<>();
@@ -42,7 +104,7 @@ public class FlightDAO {
         config.enforceForeignKeys(true);
 
         String query = "SELECT f.flight_number, f.airline, a.AIRPORT_NAME as \"from_airport\", \n" +
-                "a2.AIRPORT_NAME as \"to_airport\", f.flight_date, f.ARRIVING_TIME, f.DEPARTURE_TIME\n" +
+                "a2.AIRPORT_NAME as \"to_airport\", DEPARTURE_DATE, ARRIVING_DATE\n" +
                 "from FLIGHTS f\n" +
                 "join AIRPORTS a on a.ID = f.from_airport_id\n" +
                 "join AIRPORTS a2 on a2.ID = f.TO_AIRPORT_ID;";
@@ -55,9 +117,8 @@ public class FlightDAO {
                             rs.getString("AIRLINE"),
                             rs.getString("from_airport"),
                             rs.getString("to_airport"),
-                            rs.getDate("FLIGHT_DATE"),
-                            rs.getTime("ARRIVING_TIME"),
-                            rs.getTime("DEPARTURE_TIME")));
+                            rs.getString("departure_date"),
+                            rs.getString("arriving_date")));
                 }
             }
         }
@@ -67,61 +128,56 @@ public class FlightDAO {
         return flights;
     }
 
-//    public FlightDTO updateFlight (FlightDTO flight) {
-//        if (flight.getFlightID() == null){
-//            throw new IllegalArgumentException("flight.getFlight_id() is null");
-//        }
-//        SQLiteConfig config = new SQLiteConfig();
-//        config.enforceForeignKeys(true);
-//
-//        String query = "UPDATE FLIGHTS SET FLIGHT_NUMBER = ?" +
-//                "FLIGHT_NAME = ?" +
-//                "FROM_AIRPORT_ID = ?" +
-//                "TO_AIRPORT_ID = ?" +
-//                "FLIGHT_DATE = ?" +
-//                "DEPARTURE_TIME = ?" +
-//                "ARRIVING_TIME = ?" +
-//                "WHERE ID = ?";
-//
-//        try(Connection connection = DriverManager.getConnection(databaseUrl, config.toProperties());
-//            PreparedStatement preparedStatement = connection.prepareStatement(query)){
-//            preparedStatement.setString(1, flight.getFlightNumber());
-//            preparedStatement.setString(2, flight.getAirline());
-//            preparedStatement.setInt(3, flight.getFromAirportName());
-//            preparedStatement.setInt(4, flight.getToAirportID());
-//            preparedStatement.setDate(5, flight.getFlightDate());
-//            preparedStatement.setTime(6, flight.getDepartureTime());
-//            preparedStatement.setTime(7, flight.getArrivingTime());
-//            preparedStatement.setInt(8, flight.getFlightID());
-//            preparedStatement.execute();
-//        }
-//        catch (SQLException e ){
-//            e.printStackTrace();
-//        }
-//        return flight;
-//
-//    }
-
-    public void deleteFlight (FlightDTO flight) {
+    public FlightDTO updateFlight (FlightDTO flight) {
         if (flight.getFlightID() == null){
             throw new IllegalArgumentException("flight.getFlight_id() is null");
         }
         SQLiteConfig config = new SQLiteConfig();
         config.enforceForeignKeys(true);
+        AirportDAO airportDAO = new AirportDAO();
 
-        String query = "DELETE FROM FLIGHTS WHERE ID = ?";
+        String query = "UPDATE FLIGHTS SET FLIGHT_NUMBER = ?," +
+                "AIRLINE = ?," +
+                "FROM_AIRPORT_ID = ?," +
+                "TO_AIRPORT_ID = ?," +
+                "departure_date = ?," +
+                "arriving_date = ?" +
+                "WHERE ID = ?";
 
         try(Connection connection = DriverManager.getConnection(databaseUrl, config.toProperties());
             PreparedStatement preparedStatement = connection.prepareStatement(query)){
-            preparedStatement.setInt(1, flight.getFlightID());
+            preparedStatement.setString(1, flight.getFlightNumber());
+            preparedStatement.setString(2, flight.getAirline());
+            preparedStatement.setInt(3, airportDAO.getAirport(flight.getDepartureAirport())); //getAirport returns airportID using airportName
+            preparedStatement.setInt(4, airportDAO.getAirport(flight.getArrivingAirport()));
+            preparedStatement.setString(5, flight.getDepartureDate());
+            preparedStatement.setString(6, flight.getArrivingDate());
+            preparedStatement.setInt(7, flight.getFlightID());
+            preparedStatement.execute();
+        }
+        catch (SQLException e ){
+            e.printStackTrace();
+        }
+        return flight;
+    }
+
+    public void deleteFlight (String flightNumber) {
+        SQLiteConfig config = new SQLiteConfig();
+        config.enforceForeignKeys(true);
+
+        String query = "DELETE FROM FLIGHTS WHERE FLIGHT_NUMBER = ?";
+
+        try(Connection connection = DriverManager.getConnection(databaseUrl, config.toProperties());
+            PreparedStatement preparedStatement = connection.prepareStatement(query)){
+            preparedStatement.setString(1, flightNumber);
 
             preparedStatement.execute();
-            System.out.println("Deleted flight: " + flight);
-
+            System.out.println("Deleted flight with flight number: " + flightNumber);
         }
         catch (SQLException e ){
             e.printStackTrace();
         }
     }
+
 
 }

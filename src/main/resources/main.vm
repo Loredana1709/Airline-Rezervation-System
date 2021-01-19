@@ -9,22 +9,17 @@
  <div class="bg">
 
  <br><br>
-    <div>
-    <h1> Welcome to My Airline System APP </h1>
+    <div class="content">
+    <h1>&nbsp;&nbsp; Welcome to ERROR Airline </h1>
 
-    <a href="/login"><p style="text-align:center"> LOGIN </p></a>
-    <a href="/signIn"><p style="text-align:center"> CREATE ACCOUNT </p></a>
-
+    <button class="login" onclick="document.location='/login'"> LOGIN </button>
+    <button class="signIn" onclick="document.location='/signIn'"> CREATE ACCOUNT </button>
     </div>
 
      <footer>
          <p>Time from server: $serverTime <br></p>
      </footer>
 
- </div>
-
-
-
-
+</div>
 </body>
 </html>

@@ -1,0 +1,70 @@
+<html>
+<head>
+    <title> Order Ticket </title>
+    <link rel="stylesheet" type="text/css" href="/orderflight.css">
+</head>
+<body>
+
+<h3> Hello, $user! </h3>
+
+<h1> Available Flights </h1><br>
+
+    <div id="search">
+        <input id='myInput' onkeyup='searchTable()' type='text' placeholder="Search flight">
+    </div><br><br>
+
+    <table class="blue">
+    <thead>
+        <tr>
+            <th> FLIGHT NO. </th>
+            <th> AIRLINE </th>
+            <th> FROM </th>
+            <th> TO </th>
+            <th> DEPARTURE DATE </th>
+            <th> ARRIVING DATE </th>
+            <th> ORDER </th>
+        </tr>
+    </thead>
+    <tbody>
+        #foreach ($flight in $flights)
+            <tr>
+                <td>$flight.flightNumber</td>
+                <td>$flight.airline</td>
+                <td>$flight.departureAirport</td>
+                <td>$flight.arrivingAirport</td>
+                <td>$flight.departureDate</td>
+                <td>$flight.arrivingDate</td>
+                <td> <button class="book" onclick="document.location='/booking/${flight.flightNumber}'"> BOOK </button> </td>
+            </tr>
+    </tbody>
+        #end
+    </table>
+    <br><br><br><br>
+
+    <script>
+    function searchTable() {
+        var input, filter, found, table, tr, td, i, j;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td" || "th");
+            for (j = 0; j < td.length; j++) {
+                if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    found = true;
+                }
+            }
+            if (found) {
+                tr[i].style.display = "";
+                found = false;
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+    </script>
+
+
+</body>
+</html>

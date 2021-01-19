@@ -1,0 +1,45 @@
+<html>
+<head>
+    <title> Book Ticket </title>
+    <link rel="stylesheet" type="text/css" href="/bookticket.css">
+</head>
+
+<body>
+<h4> You are logged with &#8594; $username </h4>
+
+<h2> CONFIRM TICKET INFORMATION </h2>
+
+<div class="row">
+
+    <div class="column">
+        <h3> Flight </h3>
+            <p> Flight Number &nbsp; &#8669; &nbsp; <i> $flight.flightNumber </i> </p>
+            <p> Airline &nbsp; &#8669; &nbsp; <i> $flight.airline </i> </p>
+            <p> Departure Airport &nbsp; &#8669; &nbsp; <i> $flight.departureAirport </i></p>
+            <p> Arriving Airport &nbsp; &#8669; &nbsp; <i> $flight.arrivingAirport </i> </p>
+            <p> Departure Date &nbsp; &#8669; &nbsp; <i> $flight.departureDate </i> </p>
+            <p> Arriving Date &nbsp; &#8669; &nbsp; <i> $flight.arrivingDate </i> </p></div>
+
+    <div class="column">
+        <h3> Passenger </h3>
+            <p> First Name &nbsp; &#8669; &nbsp; <i> $user.firstName </i> </p>
+            <p> Last Name &nbsp; &#8669; &nbsp; <i> $user.lastName </i> </p>
+            <p> Email &nbsp; &#8669; &nbsp; <i> $user.email </i></p>
+            <p> Phone &nbsp; &#8669; &nbsp; <i> $user.phone </i> </p>
+            <p> Address &nbsp; &#8669; &nbsp; <i> $user.address </i> </p></div>
+</div>
+
+<div style="text-align:center">
+    <form method='POST'>
+        <label for='confirm'></label>
+        <input type='radio' name='confirm' value='no'>NO</input>
+        <input type='radio' name='confirm' value='yes'>YES  &nbsp; </input>
+        <input type='submit' value='CONFIRM TICKET' /><br><br>
+    </form>
+
+    <button class="changeUser" onclick="document.location='/login'"> CHANGE USER </button>
+    <button class="changeFlight" onclick="document.location='/orderflight'"> CHANGE FLIGHT </button>
+</div>
+
+</body>
+</html

@@ -1,0 +1,92 @@
+body{
+  font:1.2em normal Arial,sans-serif;
+  color:#34495E;
+}
+
+h2{
+  text-align:center;
+  text-transform:uppercase;
+  letter-spacing:-2px;
+  font-size:2 em;
+  margin:20px 0;
+}
+
+h3{
+  letter-spacing:-2px;
+  font-size:2 em;
+  margin:20px 0;
+  text-align:center;
+  line-height: 2.5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    padding: 5px;
+    height: 400px;
+    letter-spacing:-1px;
+    font-size: 2 em;
+    margin: 20px 0;
+}
+
+p{
+    text-indent: 200px;
+}
+
+.row:after {
+    width:900px;
+    margin:20px auto;
+}
+
+.changeUser{
+    border-radius: 8px;
+    background-color: #00BFFF;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.changeFlight{
+    border-radius: 8px;
+    background-color: #00BFFF;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.confirm{
+    text-align:center;
+    margin-top:100px;
+}
+
+input[type=submit] {
+    border-radius: 15px;
+    background-color: #663399;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+}

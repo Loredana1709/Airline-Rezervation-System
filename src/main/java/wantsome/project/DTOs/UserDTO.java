@@ -2,8 +2,8 @@ package wantsome.project.DTOs;
 
 public class UserDTO {
 
-    private Integer userID;
-    private String firstName; //camel case for attributes
+    private int userID;
+    private String firstName;
     private String lastName;
     private String loginName;
     private String password;
@@ -35,6 +35,16 @@ public class UserDTO {
         this.phone = phone;
         this.address = address;
         this.userType = userType;
+    }
+
+    public UserDTO(String firstName, String lastName, String loginName, String password, String email, int phone, String address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.loginName = loginName;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
     }
 
     public UserDTO(String loginName, String email, String password){

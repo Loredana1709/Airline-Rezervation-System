@@ -38,11 +38,42 @@ public class UserDAO {
         SQLiteConfig config = new SQLiteConfig();
         config.enforceForeignKeys(true);
 
-        String query = "SELECT * FROM USERS WHERE ID = ?";
+        String query = "SELECT * FROM USERS WHERE LOGIN_NAME = ?";
 
         try(Connection connection = DriverManager.getConnection(databaseUrl, config.toProperties());
             PreparedStatement preparedStatement = connection.prepareStatement(query)){
             preparedStatement.setString(1, username);
+            try (ResultSet rs = preparedStatement.executeQuery()){
+                while (rs.next()){
+                    result = new UserDTO(rs.getInt("ID"),
+                            rs.getString("FIRST_NAME"),
+                            rs.getString("LAST_NAME"),
+                            rs.getString("LOGIN_NAME"),
+                            rs.getString("PASSWORD"),
+                            rs.getString("EMAIL"),
+                            rs.getInt("PHONE"),
+                            rs.getString("ADDRESS"),
+                            rs.getString("USER_TYPE"));
+                }
+            }
+        }
+        catch (SQLException e ){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public UserDTO getUser(String username, String password){
+        UserDTO result = null;
+        SQLiteConfig config = new SQLiteConfig();
+        config.enforceForeignKeys(true);
+
+        String query = "SELECT * FROM USERS WHERE LOGIN_NAME = ? AND PASSWORD = ?";
+
+        try(Connection connection = DriverManager.getConnection(databaseUrl, config.toProperties());
+            PreparedStatement preparedStatement = connection.prepareStatement(query)){
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
             try (ResultSet rs = preparedStatement.executeQuery()){
                 while (rs.next()){
                     result = new UserDTO(rs.getInt("ID"),
@@ -110,6 +141,41 @@ public class UserDAO {
             e.printStackTrace();
         }
         return result;
+    }
+
+    public UserDTO updateUser (UserDTO user){
+        if (user.getFirstName() == null || user.getLastName() == null){
+            throw new IllegalArgumentException("ser.getFirstName() OR user.getLastName() is null");
+        }
+        SQLiteConfig config = new SQLiteConfig();
+        config.enforceForeignKeys(true);
+
+        String query = "UPDATE USERS SET FIRST_NAME = ?," +
+                "LAST_NAME = ?," +
+                "LOGIN_NAME = ?," +
+                "PASSWORD = ?," +
+                "EMAIL = ?," +
+                "PHONE = ?," +
+                "ADDRESS = ?" +
+                "WHERE ID = ?";
+
+        try(Connection connection = DriverManager.getConnection(databaseUrl, config.toProperties());
+            PreparedStatement preparedStatement = connection.prepareStatement(query)){
+            preparedStatement.setString(1, user.getFirstName());
+            preparedStatement.setString(2, user.getLastName());
+            preparedStatement.setString(3, user.getLoginName());
+            preparedStatement.setString(4, user.getPassword());
+            preparedStatement.setString(5, user.getEmail());
+            preparedStatement.setInt(6, user.getPhone());
+            preparedStatement.setString(7, user.getAddress());
+            preparedStatement.setInt(8, user.getUserID());
+            preparedStatement.execute();
+            System.out.println("Updated user: " + user);
+        }
+        catch (SQLException e ){
+            e.printStackTrace();
+        }
+        return user;
     }
 
     public void deleteUser (UserDTO user){

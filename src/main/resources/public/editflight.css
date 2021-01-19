@@ -1,0 +1,88 @@
+body{
+  font:1.2em normal Arial,sans-serif;
+  color:#34495E;
+}
+
+h1{
+  text-align:center;
+  text-transform:uppercase;
+  letter-spacing:-2px;
+  font-size:2.5em;
+  margin:20px 0;
+}
+
+.create{
+    border-radius: 10px;
+    background-color: #4B0082;
+    border: none;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+    float: right;
+}
+.delete{
+    border-radius: 5px;
+    background-color: #663399;
+    border: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.update{
+    border-radius: 5px;
+    background-color: #663399;
+    border: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+table{
+  border-collapse:collapse;
+  width:100%;
+}
+
+.purple{
+  border:2px solid #663399;
+}
+
+.purple thead{
+  background:#663399;
+}
+
+thead{
+  color:white;
+}
+
+th,td{
+  text-align:center;
+  padding:10px 0;
+}
+
+tbody tr:hover{
+background: #d1c2f0;
+  color: #FFFFFF;
+}
+
+.fixed{
+  top:0;
+  position:fixed;
+  width:auto;
+  display:none;
+  border:none;
+}

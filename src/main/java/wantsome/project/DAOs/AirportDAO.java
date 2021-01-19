@@ -2,9 +2,12 @@ package wantsome.project.DAOs;
 
 import org.sqlite.SQLiteConfig;
 import wantsome.project.DTOs.AirportDTO;
+import wantsome.project.DTOs.FlightDTO;
 import wantsome.project.DTOs.UserDTO;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AirportDAO {
 
@@ -27,19 +30,19 @@ public class AirportDAO {
         }
     }
 
-    public AirportDTO getAirport (int id) throws SQLException {
-        AirportDTO result = null;
+    public int getAirport (String airportName) throws SQLException {
+        int airportID = 0;
         SQLiteConfig config = new SQLiteConfig();
         config.enforceForeignKeys(true);
 
-        String query = "SELECT * FROM AIRPORTS WHERE ID = ?";
+        String query = "SELECT * FROM AIRPORTS WHERE AIRPORT_NAME = ?";
 
         try(Connection connection = DriverManager.getConnection(databaseUrl, config.toProperties());
             PreparedStatement preparedStatement = connection.prepareStatement(query)){
-            preparedStatement.setInt(1, id);
+            preparedStatement.setString(1, airportName);
             try (ResultSet rs = preparedStatement.executeQuery()){
                 while (rs.next()){
-                    result = new AirportDTO(rs.getInt("ID"), rs.getString("AIRPORT_NAME"), rs.getInt("CITY_ID"));
+                    airportID = rs.getInt("ID");
 
                 }
             }
@@ -47,7 +50,28 @@ public class AirportDAO {
         catch (SQLException e ){
             e.printStackTrace();
         }
-        return result;
+        return airportID;
+    }
+
+    public List<String> getAllAirports(){
+        List<String> airportsName = new ArrayList<>();
+        SQLiteConfig config = new SQLiteConfig();
+        config.enforceForeignKeys(true);
+
+        String query = "SELECT AIRPORT_NAME FROM AIRPORTS";
+
+        try(Connection connection = DriverManager.getConnection(databaseUrl, config.toProperties());
+            Statement statement = connection.createStatement()){
+            try (ResultSet rs = statement.executeQuery(query)){
+                while (rs.next()){
+                    airportsName.add(rs.getString("AIRPORT_NAME"));
+                }
+            }
+        }
+        catch (SQLException e ){
+            e.printStackTrace();
+        }
+        return airportsName;
     }
 
     public void deleteAirport (AirportDTO airport) throws SQLException {

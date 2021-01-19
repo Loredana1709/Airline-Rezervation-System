@@ -1,0 +1,54 @@
+body{
+  font:1.2em normal Arial,sans-serif;
+  color:#34495E;
+}
+
+h1 {
+	font-weight: bold;
+	margin: 0;
+	text-align: center;
+}
+
+#form {
+    text-align: justify;
+}
+
+p{
+    text-indent: 400px;
+}
+
+input[type=text], select {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=datetime-local], select {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+input[type=submit] {
+  width: 20%;
+  background-color: #1E90FF;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit{
+    text-align: center;
+}

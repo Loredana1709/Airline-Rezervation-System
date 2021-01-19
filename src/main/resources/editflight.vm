@@ -1,0 +1,47 @@
+<html>
+<head>
+    <title> Flights </title>
+    <link rel="stylesheet" type="text/css" href="/editflight.css">
+</head>
+
+<body>
+
+<h3> Hello, $user! Welcome back!
+
+<h1> Flights List </h1><br>
+
+<button class="create" onclick="document.location='/createFlight'"> <b> CREATE </b></button>
+
+    <table class="purple">
+    <thead>
+        <tr>
+            <th> FLIGHT NO. </th>
+            <th> AIRLINE </th>
+            <th> FROM </th>
+            <th> TO </th>
+            <th> DEPARTURE DATE </th>
+            <th> ARRIVING DATE </th>
+            <th>  </th>
+        </tr>
+    </thead>
+    <tbody>
+        #foreach ($flight in $flights)
+            <tr>
+                <td>$flight.flightNumber</td>
+                <td>$flight.airline</td>
+                <td>$flight.departureAirport</td>
+                <td>$flight.arrivingAirport</td>
+                <td>$flight.departureDate</td>
+                <td>$flight.arrivingDate</td>
+                <td><button class="delete" onclick="document.location='/delete/${flight.flightNumber}'"> DELETE </button>
+                    <button class="update" onclick="document.location='/update/${flight.flightNumber}'"> UPDATE </button></td>
+            </tr>
+    </tbody>
+        #end
+    </table>
+    <br><br>
+
+
+</body>
+</html>
+

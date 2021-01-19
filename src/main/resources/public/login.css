@@ -1,33 +1,65 @@
 body, html {
+    text-align: center;
     height: 100%;
     margin: 0;
+    background: linear-gradient(to bottom, #2f4692, #02d4ff);
 }
 
-.bg {
-  background: linear-gradient(-45deg, #52eeba, #3c67e7, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-  height: 100%;
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 250px;
+    text-align: right;
 }
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+
+#form {
+    position: fixed;
+    width: 400px;
+    height: 500px;
+    top: 30%;
+    left: 50%;
+    margin-top: -140px;
+    margin-left: -170px;
+	background: #fff;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
 }
 
 h1 {
-    color: black;
-    font-family: Georgia, serif;
-    font-size: 20px;
-    text-align: center
+	font-weight: bold;
+	margin: 0;
+	text-align: center;
 }
 
-.form{
-    text-align: center;
+input[type=text], select {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=password], select {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 20%;
+  background-color: #00BFFF;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }

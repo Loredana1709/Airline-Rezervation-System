@@ -1,0 +1,97 @@
+body{
+  font:1.2em normal Arial,sans-serif;
+  color:#34495E;
+  height: 100%;
+  margin: 0;
+}
+
+h2{
+  text-align:center;
+  text-transform:uppercase;
+  letter-spacing:-2px;
+  font-size:2 em;
+  margin:20px 0;
+}
+
+h4, .home{
+    display: inline-block;
+}
+
+.home{
+    float: right;
+    border-radius: 8px;
+    background-color: #5c5cd6;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 90%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#myInput {
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 40%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#search{
+  width: 100vw;
+  position: relative;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+
+table{
+  border-collapse:collapse;
+  width:100%;
+}
+
+.blue{
+  border:2px solid #1ABC9C;
+}
+
+.blue thead{
+  background:#1ABC9C;
+}
+
+thead{
+  color:white;
+}
+
+th,td{
+  text-align:center;
+  padding:10px 0;
+}
+
+tbody tr:hover{
+background:#BDC3C7;
+  color:#FFFFFF;
+}
+
+.fixed{
+  top:0;
+  position:fixed;
+  width:auto;
+  display:none;
+  border:none;
+}

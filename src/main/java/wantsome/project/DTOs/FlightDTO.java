@@ -1,72 +1,91 @@
 package wantsome.project.DTOs;
 
-import java.sql.Date;
-import java.sql.Time;
 
 public class FlightDTO {
 
     private Integer flightID;
     private String flightNumber;
     private String airline;
-    private String fromAirportName;
-    private String toAirportName;
-    private Date flightDate;
-    private Time departureTime;
-    private Time arrivingTime;
+    private String departureAirport;
+    private String arrivingAirport;
+    private String departureDate;
+    private String arrivingDate;
 
-    public FlightDTO(Integer flightID, String flightNumber, String airline, String fromAirportName,
-                     String toAirportName, Date flightDate, Time departureTime, Time arrivingTime) {
+    public FlightDTO(Integer flightID, String flightNumber, String airline, String departureAirport,
+                     String arrivingAirport, String departureDate, String arrivingDate) {
         this.flightID = flightID;
         this.flightNumber = flightNumber;
         this.airline = airline;
-        this.fromAirportName = fromAirportName;
-        this.toAirportName = toAirportName;
-        this.flightDate = flightDate;
-        this.departureTime = departureTime;
-        this.arrivingTime = arrivingTime;
+        this.departureAirport = departureAirport;
+        this.arrivingAirport = arrivingAirport;
+        this.departureDate = departureDate;
+        this.arrivingDate = arrivingDate;
     }
 
-    public FlightDTO(String flightNumber, String airline, String fromAirportName,
-                     String toAirportName, Date flightDate, Time departureTime, Time arrivingTime) {
+    public FlightDTO(String flightNumber, String airline, String departureAirport,
+                     String arrivingAirport, String departureDate, String arrivingDate) {
         this.flightNumber = flightNumber;
         this.airline = airline;
-        this.fromAirportName = fromAirportName;
-        this.toAirportName = toAirportName;
-        this.flightDate = flightDate;
-        this.departureTime = departureTime;
-        this.arrivingTime = arrivingTime;
+        this.departureAirport = departureAirport;
+        this.arrivingAirport = arrivingAirport;
+        this.departureDate = departureDate;
+        this.arrivingDate = arrivingDate;
     }
 
     public Integer getFlightID() {
         return flightID;
     }
 
+    public void setFlightID(Integer flightID) {
+        this.flightID = flightID;
+    }
+
     public String getFlightNumber() {
         return flightNumber;
+    }
+
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
     }
 
     public String getAirline() {
         return airline;
     }
 
-    public String getFromAirportName() {
-        return fromAirportName;
+    public void setAirline(String airline) {
+        this.airline = airline;
     }
 
-    public String getToAirportName() {
-        return toAirportName;
+    public String getDepartureAirport() {
+        return departureAirport;
     }
 
-    public Date getFlightDate() {
-        return flightDate;
+    public void setDepartureAirport(String departureAirport) {
+        this.departureAirport = departureAirport;
     }
 
-    public Time getDepartureTime() {
-        return departureTime;
+    public String getArrivingAirport() {
+        return arrivingAirport;
     }
 
-    public Time getArrivingTime() {
-        return arrivingTime;
+    public void setArrivingAirport(String arrivingAirport) {
+        this.arrivingAirport = arrivingAirport;
+    }
+
+    public String getDepartureDate() {
+        return departureDate;
+    }
+
+    public void setDepartureDate(String departureDate) {
+        this.departureDate = departureDate;
+    }
+
+    public String getArrivingDate() {
+        return arrivingDate;
+    }
+
+    public void setArrivingDate(String arrivingDate) {
+        this.arrivingDate = arrivingDate;
     }
 
     @Override
@@ -75,11 +94,10 @@ public class FlightDTO {
                 "flightID=" + flightID +
                 ", flightNumber='" + flightNumber + '\'' +
                 ", airline='" + airline + '\'' +
-                ", fromAirportName='" + fromAirportName + '\'' +
-                ", toAirportName='" + toAirportName + '\'' +
-                ", flightDate=" + flightDate +
-                ", departureTime=" + departureTime +
-                ", arrivingTime=" + arrivingTime +
+                ", departureAirport='" + departureAirport + '\'' +
+                ", arrivingAirport='" + arrivingAirport + '\'' +
+                ", departureDate='" + departureDate + '\'' +
+                ", arrivingDate='" + arrivingDate + '\'' +
                 '}';
     }
 }

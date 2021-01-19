@@ -1,0 +1,90 @@
+<html>
+<head>
+    <title> Create Flight </title>
+    <link rel="stylesheet" type="text/css" href="/createFlight.css">
+</head>
+
+<body>
+    <h3> You are logged with &#8594; $user</h3>
+
+    <h1> Fill up all these fields </h1><br><br>
+
+    <div id="form">
+   <form method='POST'>
+        <label for='flightNumber'> <p> Flight Number &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="text" name="flightNumber" placeholder="Flight Number" required /><br></p>
+
+        <label for='airline'> <p>&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp; Airline &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <select name="airline" required/>
+            <option value="" disabled selected> Select Airline </option>
+            <option value="Qantas"> Qantas </option>
+            <option value="Wizz Air">Wizz Air</option>
+            <option value="Qatar Airways">Qatar Airways</option>
+            <option value="Lufthansa">Lufthansat</option>
+            <option value="Blue Air">Blue Air</option>
+            <option value="Japan Airlines">Japan Airlines</option>
+            <option value="Virgin Australia">Virgin Australia</option>
+        </select><br></p>
+
+
+        <label for='departure'> <p> Airport Departure &nbsp; </label>
+        <select name="departure" required/>
+            <option value="" disabled selected> Select Departure </option>
+            <option value="Châlons Vatry Airport"> Châlons Vatry Airport </option>
+            <option value="Kenmore Air Harbor Seaplane Base">Kenmore Air Harbor Seaplane Base</option>
+            <option value="Los Angeles International Airport">Los Angeles International Airport</option>
+            <option value="Essendon Airport">Essendon Airport</option>
+            <option value="Omitama, Ibaraki">Omitama, Ibaraki</option>
+            <option value="John F. Kennedy International Airport">John F. Kennedy International Airport</option>
+            <option value="Hollywood Burbank Airport">Hollywood Burbank Airport</option>
+            <option value="Melbourne Airport">Melbourne Airport</option>
+            <option value="Manchester–Boston Regional Airport">Manchester–Boston Regional Airport</option>
+            <option value="Palm Beach International Airport">Palm Beach International Airport</option>
+            <option value="Stockholm Arlanda Airport">Stockholm Arlanda Airport"</option>
+            <option value="Narita International Airport">Narita International Airport</option>
+            <option value="Otopeni">Otopeni</option>
+            <option value="Charles de Gaulle Airport">Charles de Gaulle Airport</option>
+            <option value="Heathrow Airport">Heathrow Airport</option>
+        </select><br></p>
+
+        <label for='destination'> <p> Airport Destination </label>
+        <select name="destination" required/>
+            <option value="" disabled selected> Select Destination </option>
+            <option value="Châlons Vatry Airport"> Châlons Vatry Airport </option>
+            <option value="Kenmore Air Harbor Seaplane Base">Kenmore Air Harbor Seaplane Base</option>
+            <option value="Los Angeles International Airport">Los Angeles International Airport</option>
+            <option value="Essendon Airport">Essendon Airport</option>
+            <option value="Omitama, Ibaraki">Omitama, Ibaraki</option>
+            <option value="John F. Kennedy International Airport">John F. Kennedy International Airport</option>
+            <option value="Hollywood Burbank Airport">Hollywood Burbank Airport</option>
+            <option value="Melbourne Airport">Melbourne Airport</option>
+            <option value="Manchester–Boston Regional Airport">Manchester–Boston Regional Airport</option>
+            <option value="Palm Beach International Airport">Palm Beach International Airport</option>
+            <option value="Stockholm Arlanda Airport">Stockholm Arlanda Airport"</option>
+            <option value="Narita International Airport">Narita International Airport</option>
+            <option value="Otopeni">Otopeni</option>
+            <option value="Charles de Gaulle Airport">Charles de Gaulle Airport</option>
+            <option value="Heathrow Airport">Heathrow Airport</option>
+        </select><br></p>
+
+        <label for='departureDate'> <p> Departure Date &nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="datetime-local" id="departureDate" name="departureDate" required/><br></p>
+
+        <label for='arrivingDate'> <p> Arriving Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="datetime-local" id="arrivingDate" name="arrivingDate" required/><br> </p>
+
+        <div class="submit">
+        <input type='submit' value="Submit" />
+        </div>
+    </form>
+    </div>
+   <br><br
+
+
+    #if( $!message)
+    <h2 style="color: red">$message</h2>
+    #end
+
+</body>
+</html>
