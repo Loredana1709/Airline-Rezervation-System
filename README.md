@@ -1,16 +1,15 @@
-## Wantsome - Project X
+✈️ Airline Reservation System
 
- - This is a __template__ for the final project at the end of Java course.
-   It's just a basic working gradle project, with common libraries included.
+-----Final project of Wantsome Java course-----
 
- - __IMPORTANT__: after you finish your project, you should replace this
-   content with something more relevant for your specific project. 
-   
-   It should contain: 
-   - short description, the __purpose and scope__ of your project
-   - __initial setup instructions__ (init db, others?)
-   - __usage instructions__
-   - interesting __technical details__ about how you built it (libs used, db, etc)
-   
-   For nicer formatting you may using __MarkDown syntax__, see guide: 
-   <https://guides.github.com/features/mastering-markdown>
+This java project was based on creating a web application of airline ticket reservation system. The system includes mainly two different accessibility levels. One for Customer's ticket reservation and other for Admin. 
+
+Customers can mainly do booking flights based on different dates and times. After the reservation has been made, they can check it (along with all the previous reservations made).
+
+As an Admin, he can manage all the flights (add, delete, edit), he can do any change he wants to the system database through his interfaces.
+
+Tools and Tehnologies:
+- Front-End: HTML, CSS
+- Back-End: Java
+- DataBase: SQLite
+
