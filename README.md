@@ -1,6 +1,5 @@
 ✈️ Airline Reservation System
 
------Final project of Wantsome Java course-----
 
 This java project was based on creating a web application of airline ticket reservation system. The system includes mainly two different accessibility levels. One for Customer's ticket reservation and other for Admin. 
 
